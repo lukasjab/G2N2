@@ -1,22 +1,49 @@
+#!/usr/bin/python3
 import psutil
-# Number of CPU cores
+
+# 1. CPU Usage
+# a. Cores
 num_cores = psutil.cpu_count()
+print("Number of Cores:", num_cores)
 
-# CPU frequency
-cpu_freq = psutil.cpu_freq()
-current_freq = cpu_freq.current
-min_freq = cpu_freq.min
-max_freq = cpu_freq.max
+# b. Frequency
+freq = psutil.cpu_freq()
+print("Current Frequency (MHz):", freq.current)
+print("Minimum Frequency (MHz):", freq.min)
+print("Maximum Frequency (MHz):", freq.max)
 
-# CPU states
-cpu_states = psutil.cpu_stats()
+# c. States
+states = psutil.cpu_stats()
+print("CPU States:", states)
 
-# CPU load
-cpu_load = psutil.getloadavg()
+# d. Load
+load_avg = psutil.getloadavg()
+print("Average System Load (1 min, 5 min, 15 min):", load_avg)
 
-print("Number of CPU cores:", num_cores)
-print("Current CPU frequency (MHz):", current_freq)
-print("Minimum CPU frequency (MHz):", min_freq)
-print("Maximum CPU frequency (MHz):", max_freq)
-print("CPU states:", cpu_states)
-print("CPU load (1 min, 5 min, 15 min):", cpu_load)
+# 2. Memory
+# a. Total, available and Percentage
+mem = psutil.virtual_memory()
+print("Total Memory (bytes):", mem.total)
+print("Available Memory (bytes):", mem.available)
+print("Memory Usage (%):", mem.percent)
+
+# b. Swap information
+swap = psutil.swap_memory()
+print("Swap Memory (bytes):", swap.total)
+
+# c. General Memory info
+mem_info = psutil.virtual_memory()
+print("Active Memory (bytes):", mem_info.active)
+print("Inactive Memory (bytes):", mem_info.inactive)
+print("Buffers (bytes):", mem_info.buffers)
+print("Cached (bytes):", mem_info.cached)
+print("Shared Memory (bytes):", mem_info.shared)
+
+# 3. Disk Usage
+# a. Monitors disk usage for ALL mounted partitions
+disk_usage = psutil.disk_usage('/')
+print("Disk Usage (bytes):", disk_usage.total)
+
+
+# d. Continue with the rest of the Python program
+print("Continuing with the rest of the program...")

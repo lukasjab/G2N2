@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import psutil
 
 # 1. CPU Usage
 # a. Cores

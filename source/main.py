@@ -8,7 +8,7 @@ def system_info_menu():
     print("System Info Menu:")
     print("1. Print All Available System Information")
     print("2. Print CPU Information")
-    print("3. Print Memory Usage")-*
+    print("3. Print Memory Usage")
     print("4. Print Disk Usage")
     print("5. Back to Main Menu")
 

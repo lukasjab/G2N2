@@ -1,48 +1,57 @@
 #!/usr/bin/python3
 
-# 1. CPU Usage
-# a. Cores
-num_cores = psutil.cpu_count()
-print("Number of Cores:", num_cores)
+import modules.system_info as system_info
+import modules.bibliography as bibliography
+import os,sys
 
-# b. Frequency
-freq = psutil.cpu_freq()
-print("Current Frequency (MHz):", freq.current)
-print("Minimum Frequency (MHz):", freq.min)
-print("Maximum Frequency (MHz):", freq.max)
+def system_info_menu():
+    print("System Info Menu:")
+    print("1. Print All Available System Information")
+    print("2. Print CPU Information")
+    print("3. Print Memory Usage")-*
+    print("4. Print Disk Usage")
+    print("5. Back to Main Menu")
 
-# c. States
-states = psutil.cpu_stats()
-print("CPU States:", states)
+    choice = input("Enter your choice (1, 2, 3, 4, or 5): ")
 
-# d. Load
-load_avg = psutil.getloadavg()
-print("Average System Load (1 min, 5 min, 15 min):", load_avg)
+    if choice == "1":
+        os.system('clear')
+        system_info.print_system_info()
+    elif choice == "2":
+        os.system('clear')
+        system_info.print_cpu_info()
+    elif choice == "3":
+        os.system('clear')
+        system_info.print_memory_info()
+    elif choice == "4":
+        os.system('clear')
+        system_info.print_disk_usage()
+    elif choice == "5":
+        return
+    else:
+        print("Invalid choice. Please try again.")
 
-# 2. Memory
-# a. Total, available and Percentage
-mem = psutil.virtual_memory()
-print("Total Memory (bytes):", mem.total)
-print("Available Memory (bytes):", mem.available)
-print("Memory Usage (%):", mem.percent)
+    system_info_menu()
 
-# b. Swap information
-swap = psutil.swap_memory()
-print("Swap Memory (bytes):", swap.total)
+def user_menu():
+    print("User Menu:")
+    print("1. System Info")
+    print("2. Print Bibliography")
+    print("3. Quit")
 
-# c. General Memory info
-mem_info = psutil.virtual_memory()
-print("Active Memory (bytes):", mem_info.active)
-print("Inactive Memory (bytes):", mem_info.inactive)
-print("Buffers (bytes):", mem_info.buffers)
-print("Cached (bytes):", mem_info.cached)
-print("Shared Memory (bytes):", mem_info.shared)
+    choice = input("Enter your choice (1, 2, or 3): ")
 
-# 3. Disk Usage
-# a. Monitors disk usage for ALL mounted partitions
-disk_usage = psutil.disk_usage('/')
-print("Disk Usage (bytes):", disk_usage.total)
+    if choice == "1":
+        os.system('clear')
+        system_info_menu()
+    elif choice == "2":
+        os.system('clear')
+        bibliography.credit_me()
+    elif choice == "3":
+        print("Exiting program...")
+        sys.exit(0)
+    else:
+        print("Invalid choice. Please try again.")
 
-
-# d. Continue with the rest of the Python program
-print("Continuing with the rest of the program...")
+while True:
+    user_menu()

@@ -10,8 +10,10 @@ def convert_bytes_to_gb_mb(value):
 
 def print_cpu_info():
     # a. Cores
-    num_cores = psutil.cpu_count()
-    print("Number of Cores:", num_cores)
+    num_physical_cores = psutil.cpu_count(logical=False)
+    num_threads = psutil.cpu_count(logical=True)
+    print("Number of Physical Cores:", num_physical_cores)
+    print("Number of Threads:", num_threads)
 
     # b. Frequency
     freq = psutil.cpu_freq()

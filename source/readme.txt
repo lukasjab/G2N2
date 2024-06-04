@@ -1,0 +1,1 @@
+Program must be run via the provided python binary in .venv folder and it must be run from the "source" directory otherwise checking version number will break.
